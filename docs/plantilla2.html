@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Solstice Energy — Commercial Solar Solutions</title>
+  <meta name="description" content="Solstice Energy — Commercial & Residential Solar Panel Systems, Installation, Maintenance and Financing." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <!-- AOS for scroll animations -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+  <style>
+    :root{
+      --accent:#FFB703; /* warm sun */
+      --dark:#0F1724;
+      --muted:#8A98A9;
+      --card-bg:linear-gradient(180deg, rgba(255,183,3,0.06), rgba(15,23,36,0.02));
+      --glass: rgba(255,255,255,0.03);
+      --radius:14px;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,#f7fbff,#f1f6fb);color:var(--dark);-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+
+    /* NAVBAR */
+    .navbar{position:sticky;top:0;z-index:80;background:rgba(255,255,255,0.7);backdrop-filter:blur(6px);border-bottom:1px solid rgba(15,23,36,0.04)}
+    .nav-wrap{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:700}
+    .brand .logo{width:44px;height:44px;border-radius:10px;background:conic-gradient(from 200deg,#FFB703,#FF8A00 45%,#FFD166 70%);display:flex;align-items:center;justify-content:center;color:white;font-weight:800;box-shadow:0 6px 20px rgba(3,7,18,0.08)}
+    .nav-links{display:flex;gap:18px;align-items:center}
+    .btn{padding:10px 16px;border-radius:10px;background:var(--accent);color:#07203A;font-weight:700}
+    .ghost{padding:10px 12px;border-radius:10px;background:transparent;color:var(--dark);border:1px solid rgba(15,23,36,0.06)}
+
+    /* HERO */
+    .hero{max-width:1200px;margin:36px auto;padding:28px;display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center}
+    .hero-left h1{font-size:clamp(28px,4vw,44px);margin:0 0 12px;line-height:1.02}
+    .lead{color:var(--muted);margin-bottom:18px}
+    .cta-row{display:flex;gap:12px}
+
+    .hero-card{background:var(--card-bg);padding:18px;border-radius:18px;box-shadow:0 8px 30px rgba(15,23,36,0.06)}
+    .stats{display:flex;gap:12px;margin-top:12px}
+    .stat{flex:1;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:10px;border-radius:12px;text-align:center}
+
+    /* ABOUT */
+    .section{max-width:1200px;margin:48px auto;padding:0 20px}
+    .about{display:flex;gap:26px;align-items:center}
+    .about .text{flex:1}
+    .about .visual{width:420px;border-radius:18px;overflow:hidden;box-shadow:0 20px 40px rgba(15,23,36,0.06)}
+
+    /* GALLERY */
+    .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .gallery-grid img{width:100%;height:220px;object-fit:cover;border-radius:12px;display:block}
+
+    /* INFORMATION (multi-column content) */
+    .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .card{background:white;padding:18px;border-radius:12px;box-shadow:0 10px 30px rgba(8,12,20,0.04)}
+
+    /* NEWSLETTER */
+    .newsletter{display:flex;gap:12px;align-items:center;padding:20px;background:var(--glass);border-radius:12px}
+    .newsletter input{flex:1;padding:12px;border-radius:10px;border:1px solid rgba(15,23,36,0.06)}
+
+    /* COMPANY INFO */
+    .company{display:flex;gap:18px;align-items:flex-start}
+
+    /* FORM */
+    form .field{display:flex;flex-direction:column;margin-bottom:12px}
+    input,textarea,select{padding:12px;border-radius:10px;border:1px solid rgba(15,23,36,0.06);font-family:inherit}
+    textarea{min-height:120px}
+
+    /* 3 columns images always 3 per row */
+    .three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .three-col .cell{overflow:hidden;border-radius:12px}
+    .three-col img{width:100%;height:180px;object-fit:cover;display:block;aspect-ratio:4/3}
+
+    /* SERVICES */
+    .services{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .service{padding:18px;border-radius:12px;background:white;box-shadow:0 10px 30px rgba(8,12,20,0.04)}
+
+    /* FOOTER */
+    footer{background:#071428;color:rgba(255,255,255,0.9);padding:36px 20px}
+    footer .fgrid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px}
+
+    /* Responsive behavior */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr;}
+      .about{flex-direction:column}
+      .info-grid{grid-template-columns:1fr}
+      footer .fgrid{grid-template-columns:1fr}
+    }
+
+    /* Ensure images never distort and keep 3 columns even on small devices */
+    @media (max-width:480px){
+      .three-col{grid-template-columns:repeat(3,1fr);}
+      .three-col img{height:110px}
+      .gallery-grid img{height:110px}
+    }
+
+    /* subtle micro interactions */
+    .hover-lift{transition:transform .36s cubic-bezier(.2,.9,.2,1), box-shadow .36s}
+    .hover-lift:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(12,18,32,0.12)}
+
+    /* utility */
+    .mx{max-width:1200px;margin:0 auto}
+    h2{margin:6px 0 12px}
+    p{margin:0 0 12px}
+    .muted{color:var(--muted)}
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="nav-wrap mx">
+      <div class="brand"><div class="logo">SE</div><div>
+        <div style="font-size:14px">Solstice Energy</div>
+        <div style="font-size:12px;color:var(--muted)">Clean Power. Clear Savings.</div>
+      </div></div>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#company">Company</a>
+        <a href="#contact" class="ghost">Contact</a>
+        <a href="#estimate" class="btn">Get Estimate</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main>
+    <section class="hero" aria-label="hero">
+      <div class="hero-left" data-aos="fade-up">
+        <h1>Commercial & Residential Solar Systems — Designed for Performance</h1>
+        <p class="lead">Solstice Energy designs and installs high-efficiency solar solutions that lower operating costs and increase asset value. From rooftop retrofits to ground-mounted systems and energy storage, we help businesses and homeowners go solar with confidence.</p>
+        <div class="cta-row">
+          <a href="#estimate" class="btn">Request Free Estimate</a>
+          <a href="#services" class="ghost">Our Services</a>
+        </div>
+        <div class="stats" style="margin-top:18px">
+          <div class="stat"><div style="font-weight:800;font-size:18px">1,420+</div><div class="muted">Systems Installed</div></div>
+          <div class="stat"><div style="font-weight:800;font-size:18px">12 yrs</div><div class="muted">Average System Warranty</div></div>
+          <div class="stat"><div style="font-weight:800;font-size:18px">$4.2M</div><div class="muted">Saved for Clients (yrly)</div></div>
+        </div>
+      </div>
+
+      <aside class="hero-card hover-lift" data-aos="fade-left">
+        <div style="display:flex;align-items:center;gap:12px">
+          <div style="flex:1">
+            <div style="font-size:13px;color:var(--muted);">Featured Project</div>
+            <div style="font-weight:700">Riverside Logistics — 520kW Rooftop</div>
+            <div class="muted" style="font-size:13px;margin-top:8px">Installed 2024 · Battery-ready · 18% predicted energy increase</div>
+          </div>
+          <img src="https://source.unsplash.com/240x160/?solar-panel" alt="project" style="width:110px;height:72px;object-fit:cover;border-radius:10px">
+        </div>
+        <div style="margin-top:12px">
+          <small class="muted">Financing, monitoring and warranty packages available.</small>
+        </div>
+      </aside>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="about mx">
+        <div class="text" data-aos="fade-right">
+          <h2>About Solstice Energy</h2>
+          <p>Founded in 2016, Solstice Energy is an end-to-end solar developer focused on high-quality engineering, fast installations, and long-term performance. We combine best-in-class PV modules, intelligent inverters and advanced monitoring to deliver clean, reliable power for commercial portfolios and residential customers.</p>
+          <ul class="muted">
+            <li>Engineering & design</li>
+            <li>Turnkey installations</li>
+            <li>O&M & remote monitoring</li>
+            <li>Project financing & incentives</li>
+          </ul>
+        </div>
+        <div class="visual" data-aos="fade-left">
+          <picture>
+            <source srcset="https://source.unsplash.com/800x600/?solar-farm" media="(min-width:800px)">
+            <img src="https://source.unsplash.com/640x480/?solar-panel,installation" alt="solar installation" style="width:100%;height:100%;display:block;object-fit:cover">
+          </picture>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery" class="section" data-aos="fade-up">
+      <h2>Project Gallery</h2>
+      <p class="muted">A selection of recent projects showing rooftop, ground-mount and integrated storage installations.</p>
+      <div class="gallery-grid" style="margin-top:16px">
+        <img loading="lazy" src="https://source.unsplash.com/800x600/?solar-panel,roof" alt="gallery-1" class="hover-lift" onclick="openLightbox(this)">
+        <img loading="lazy" src="https://source.unsplash.com/800x600/?solar-panel,ground" alt="gallery-2" class="hover-lift" onclick="openLightbox(this)">
+        <img loading="lazy" src="https://source.unsplash.com/800x600/?solar,energy-storage" alt="gallery-3" class="hover-lift" onclick="openLightbox(this)">
+        <img loading="lazy" src="https://source.unsplash.com/800x600/?solar,panels,installation" alt="gallery-4" class="hover-lift" onclick="openLightbox(this)">
+        <img loading="lazy" src="https://source.unsplash.com/800x600/?pv,commercial" alt="gallery-5" class="hover-lift" onclick="openLightbox(this)">
+        <img loading="lazy" src="https://source.unsplash.com/800x600/?renewable,solar" alt="gallery-6" class="hover-lift" onclick="openLightbox(this)">
+      </div>
+    </section>
+
+    <!-- INFORMATION -->
+    <section class="section">
+      <div class="info-grid mx" data-aos="fade-up">
+        <div class="card">
+          <h3>Why Solar Now?</h3>
+          <p>Energy prices are volatile — solar provides predictable long-term energy costs, reduces exposure to grid price increases and often qualifies for tax credits and rebates. Our designs are tailored to maximize return on investment and meet corporate ESG goals.</p>
+        </div>
+        <div class="card">
+          <h3>How We Work</h3>
+          <p>From feasibility and permitting to procurement, construction and commissioning — we manage every stage. Our preferred equipment list includes Tier 1 PV modules and smart inverters for reliability and performance monitoring.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="section mx" data-aos="fade-up">
+      <h2>Stay Informed</h2>
+      <div class="newsletter">
+        <div style="flex:1">
+          <strong>Get monthly insights about solar economics, incentives and case studies.</strong>
+          <div class="muted" style="font-size:13px">No spam — unsubscribe anytime.</div>
+        </div>
+        <form onsubmit="subscribe(event)" style="display:flex;gap:10px;align-items:center">
+          <input id="newsletterEmail" type="email" placeholder="Enter your business email" required>
+          <button class="btn" type="submit">Subscribe</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- COMPANY INFO + FORM -->
+    <section id="company" class="section mx" data-aos="fade-up">
+      <div style="display:grid;grid-template-columns:1fr 420px;gap:20px;align-items:start">
+        <div>
+          <h2>Solstice Energy — Corporate Overview</h2>
+          <p>Headquarters: 320 Harbor Way, San Diego, CA</p>
+          <p>Founded: 2016 · Employees: 84 · License: C46 Solar Contractor</p>
+          <p>Core markets: West Coast commercial & residential projects, utility-scale partners.</p>
+          <div style="margin-top:12px" class="three-col">
+            <div class="cell hover-lift"><img src="https://source.unsplash.com/400x300/?solar-panel,worksite" alt="img1"></div>
+            <div class="cell hover-lift"><img src="https://source.unsplash.com/400x300/?battery,solar" alt="img2"></div>
+            <div class="cell hover-lift"><img src="https://source.unsplash.com/400x300/?solar,engineer" alt="img3"></div>
+          </div>
+        </div>
+
+        <aside style="background:white;padding:18px;border-radius:12px;box-shadow:0 12px 30px rgba(8,12,20,0.05)" id="contact">
+          <h3>Contact & Estimate</h3>
+          <form id="contactForm" onsubmit="submitForm(event)">
+            <div class="field"><label>Name</label><input name="name" required></div>
+            <div class="field"><label>Company</label><input name="company"></div>
+            <div class="field"><label>Email</label><input name="email" type="email" required></div>
+            <div class="field"><label>Phone</label><input name="phone" inputmode="tel"></div>
+            <div class="field"><label>Project Type</label>
+              <select name="type"><option>Rooftop (commercial)</option><option>Rooftop (residential)</option><option>Ground-mount</option><option>Storage + Solar</option></select>
+            </div>
+            <div class="field"><label>Message</label><textarea name="message" placeholder="Tell us about your site or goals"></textarea></div>
+            <div style="display:flex;gap:10px">
+              <button type="submit" class="btn">Send Request</button>
+              <button type="reset" class="ghost">Reset</button>
+            </div>
+          </form>
+        </aside>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="section mx" data-aos="fade-up">
+      <h2>Our Services</h2>
+      <div class="services" style="margin-top:14px">
+        <div class="service hover-lift" data-aos="zoom-in">
+          <h3>Design & Engineering</h3>
+          <p>Structural analysis, PV layout, interconnection studies and 3D renderings to speed permitting and ensure safe installations.</p>
+        </div>
+        <div class="service hover-lift" data-aos="zoom-in" data-aos-delay="80">
+          <h3>Turnkey Installation</h3>
+          <p>Experienced installation crews with project management, QA and safety programs to complete projects on-time and on-budget.</p>
+        </div>
+        <div class="service hover-lift" data-aos="zoom-in" data-aos-delay="160">
+          <h3>Operations & Maintenance</h3>
+          <p>Performance monitoring, preventative maintenance and quick-response repairs to keep systems producing at peak levels.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="fgrid">
+      <div>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px"><div class="logo">SE</div><div><strong>Solstice Energy</strong><div class="muted" style="font-size:13px">Clean Power. Clear Savings.</div></div></div>
+        <p class="muted">Providing reliable solar solutions across the West Coast since 2016. Contact us for project quotes, financing options, and technical support.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul class="muted">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p>Phone: (619) 555-0142<br> Email: info@solstice.energy</p>
+        <p class="muted" style="font-size:13px">Address: 320 Harbor Way, San Diego, CA</p>
+      </div>
+    </div>
+    <div style="max-width:1200px;margin:18px auto 0;padding:0 20px;color:rgba(255,255,255,0.6);font-size:13px">© Solstice Energy, 2016-2025 · All rights reserved</div>
+  </footer>
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox" style="position:fixed;inset:0;background:rgba(2,6,23,0.75);display:none;align-items:center;justify-content:center;z-index:200">
+    <button onclick="closeLightbox()" style="position:absolute;right:18px;top:18px;background:transparent;border:none;color:white;font-size:22px">✕</button>
+    <img id="lightboxImg" src="" alt="" style="max-width:92%;max-height:86%;border-radius:10px;box-shadow:0 30px 70px rgba(0,0,0,0.6)">
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    AOS.init({duration:700,once:true,easing:'ease-out-cubic'});
+
+    // Lightbox
+    function openLightbox(img){
+      document.getElementById('lightboxImg').src = img.src;
+      document.getElementById('lightbox').style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox(){
+      document.getElementById('lightbox').style.display = 'none';
+      document.body.style.overflow = '';
+    }
+
+    // Newsletter subscribe (mock)
+    function subscribe(e){
+      e.preventDefault();
+      const email = document.getElementById('newsletterEmail').value;
+      if(!email) return alert('Please enter a valid email');
+      alert('Thank you — you\'re subscribed!');
+      document.getElementById('newsletterEmail').value = '';
+    }
+
+    // Contact form mock
+    function submitForm(e){
+      e.preventDefault();
+      const form = e.target;
+      const data = new FormData(form);
+      // Simple validation
+      if(!data.get('name') || !data.get('email')){ alert('Please fill required fields'); return }
+      // pretend to send
+      alert('Thanks '+data.get('name')+' — your request has been received. We will email you shortly.');
+      form.reset();
+    }
+
+    // Intersection Observer for exit animations (fade out on scroll up)
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(!e.isIntersecting){
+          e.target.style.opacity = '0.3';
+          e.target.style.transform = 'translateY(12px)';
+        } else {
+          e.target.style.opacity = '';
+          e.target.style.transform = '';
+        }
+      })
+    },{threshold:0.2});
+
+    document.querySelectorAll('section.section, .hero, .services .service').forEach(s=>observer.observe(s));
+
+    // Smooth scrolling for in-page links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', (ev)=>{
+        ev.preventDefault();
+        const id = a.getAttribute('href');
+        const el = document.querySelector(id);
+        if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+      })
+    });
+  </script>
+</body>
+</html>
